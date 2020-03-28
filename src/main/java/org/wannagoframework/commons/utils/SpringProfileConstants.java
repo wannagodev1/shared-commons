@@ -27,8 +27,12 @@ public interface SpringProfileConstants {
 
   String SPRING_PROFILE_DEVELOPMENT = "dev";
   String SPRING_PROFILE_DEVELOPMENT_GCP = "devgcp";
-  String SPRING_PROFILE_DEVELOPMENT_LOCAL = "devlocal";
+
   String SPRING_PROFILE_DEVELOPMENT_LOCAL_EUREKA = "local-eureka";
+
+  String SPRING_PROFILE_DEVELOPMENT_LOCAL = "local";
+  String SPRING_PROFILE_DEVELOPMENT_EUREKA = "eureka";
+
   String SPRING_PROFILE_TEST = "test";
   String SPRING_PROFILE_PRODUCTION = "prod";
   String SPRING_PROFILE_STAGING = "staging";
