@@ -29,7 +29,7 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
-        repository: wannagodev1/base-server
+        repository: wannagodev1/app-base-server
         event-type: shared-commons-build
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
