@@ -79,17 +79,17 @@ public class OrikaBeanMapper extends ConfigurableMapper implements ApplicationCo
         .register();
   }
 
-  public void addMapper(Class src, Class dst) {
+  public void addMapper(Class aType, Class bType) {
     String loggerString = getLoggerPrefix("addMapper");
-    logger().debug(loggerString + "Add : " + src.getName() + " -> " + dst.getName());
+    logger().debug(loggerString + "Add : " + aType.getName() + " <-> " + bType.getName());
 
-    ClassMapBuilder classMapBuilder = factory.classMap(src, dst);
+    ClassMapBuilder classMapBuilder = factory.classMap(aType, bType);
     classMapBuilder.byDefault()
         .register();
   }
 
-  public ClassMapBuilder getClassMapBuilder(Class src, Class dst) {
-    return factory.classMap(src, dst);
+  public ClassMapBuilder getClassMapBuilder(Class aType, Class bType) {
+    return factory.classMap(aType, bType);
   }
 
   /**
@@ -98,7 +98,7 @@ public class OrikaBeanMapper extends ConfigurableMapper implements ApplicationCo
   public void addConverter(Converter<?, ?> converter) {
     String loggerString = getLoggerPrefix("addConverter");
     logger().debug(
-        loggerString + "Add : " + converter.getAType().getName() + " -> " + converter.getBType()
+        loggerString + "Add : " + converter.getAType().getName() + " <-> " + converter.getBType()
             .getName());
     factory.getConverterFactory().registerConverter(converter);
   }
