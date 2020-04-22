@@ -84,8 +84,26 @@ public class OrikaBeanMapper extends ConfigurableMapper implements ApplicationCo
     logger().debug(loggerString + "Add : " + aType.getName() + " <-> " + bType.getName());
 
     ClassMapBuilder classMapBuilder = factory.classMap(aType, bType);
-    classMapBuilder.byDefault()
-        .register();
+
+    Class aParent = getParentClass( aType );
+    Class bParent = getParentClass( bType );
+
+    if ( aParent != null && bParent != null )
+      classMapBuilder = classMapBuilder.use( aParent, bParent );
+
+    classMapBuilder = classMapBuilder.byDefault();
+
+    classMapBuilder.register();
+  }
+
+  private Class getParentClass( Class aClass ) {
+    if ( aClass.getSuperclass() == null )
+      return null;
+
+    if ( aClass.getSuperclass().equals( Object.class) )
+      return aClass;
+    else
+      return getParentClass(aClass.getSuperclass());
   }
 
   public ClassMapBuilder getClassMapBuilder(Class aType, Class bType) {
